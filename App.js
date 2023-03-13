@@ -25,7 +25,9 @@ export default function App() {
         <Text style={styles.groceryText}>{item.grocery}</Text>
         <Text style={styles.quantityText}>{item.quantity}</Text>
       </View>
-      <Button title="Remove" onPress={() => handleRemoveGrocery(item.key)} />
+      
+      <Button title="Remove" onPress={() => handleRemoveGrocery(item.key)} color='red' />
+      
     </View>
   );
 
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'red'
   },
   inputContainer: {
     flexDirection: 'row',
