@@ -8,6 +8,7 @@ import {
   Text,
   ImageBackground,
   Alert,
+  SafeAreaView,
 } from "react-native";
 const image = {
   uri: "https://cdn.pixabay.com/photo/2017/11/04/21/09/textile-2918844__340.jpg",
@@ -55,6 +56,7 @@ export default function App() {
     <View style={styles.groceryItem}>
       <View style={styles.itemInfo}>
         <Text style={styles.groceryText}>{item.grocery}</Text>
+        <Text style={styles.groceryText}>   - </Text>
         <Text style={styles.quantityText}>{item.quantity}</Text>
       </View>
       <Button
@@ -66,7 +68,7 @@ export default function App() {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ImageBackground source={image}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Carmelo's Shopping List!</Text>
@@ -93,7 +95,7 @@ export default function App() {
         renderItem={renderGroceryItem}
         style={styles.list}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "red",
+    color: "#695401",
   },
   inputContainer: {
     flexDirection: "row",
