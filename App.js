@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   ImageBackground,
+  Alert,
 } from "react-native";
 const image = {
   uri: "https://cdn.pixabay.com/photo/2017/11/04/21/09/textile-2918844__340.jpg",
@@ -29,7 +30,26 @@ export default function App() {
   };
 
   const handleRemoveGrocery = (key) => {
-    setGroceryList(groceryList.filter((item) => item.key !== key));
+    Alert.alert(
+      "Remove Item",
+      "Do you wish to remove this from the shopping list?",
+      [
+        {
+          text: 'Ok',
+          onPress: () => setGroceryList(groceryList.filter((item) => item.key !== key)),
+      },
+        {
+          text: 'Cancel',
+          onPress: () => Alert.alert('Canceled!'),
+      },
+    ],
+    {
+      cancelable: true,
+      onDismiss: () => 
+      Alert.alert('Dismissed',),
+    }
+    )
+    
   };
 
   const renderGroceryItem = ({ item }) => (
@@ -39,7 +59,7 @@ export default function App() {
         <Text style={styles.quantityText}>{item.quantity}</Text>
       </View>
       <Button
-        title="Remove"
+        title=" X "
         onPress={() => handleRemoveGrocery(item.key)}
         color="red"
       />
@@ -66,7 +86,7 @@ export default function App() {
           value={quantity}
           onChangeText={(text) => setQuantity(text)}
         />
-        <Button title="Add" onPress={handleAddGrocery} />
+        <Button title="   +   " onPress={handleAddGrocery} color='lightgreen'/>
       </View>
       
         <FlatList
