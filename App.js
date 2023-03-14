@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
+    color: 'red'
   },
   inputContainer: {
     flexDirection: "row",
