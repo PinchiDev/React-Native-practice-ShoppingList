@@ -31,25 +31,24 @@ export default function App() {
 
   const handleRemoveGrocery = (key) => {
     Alert.alert(
-      "Remove Item",
-      "Do you wish to remove this from the shopping list?",
+      "Delete Item",
+      "Do you wish to delete this from the shopping list?",
       [
         {
-          text: 'Ok',
-          onPress: () => setGroceryList(groceryList.filter((item) => item.key !== key)),
-      },
+          text: "Delete",
+          onPress: () =>
+            setGroceryList(groceryList.filter((item) => item.key !== key)),
+        },
         {
-          text: 'Cancel',
-          onPress: () => Alert.alert('Canceled!'),
-      },
-    ],
-    {
-      cancelable: true,
-      onDismiss: () => 
-      Alert.alert('Dismissed',),
-    }
-    )
-    
+          text: "Cancel",
+          onPress: () => Alert.alert("Canceled!"),
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => Alert.alert("Dismissed"),
+      }
+    );
   };
 
   const renderGroceryItem = ({ item }) => (
@@ -61,7 +60,7 @@ export default function App() {
       <Button
         title=" X "
         onPress={() => handleRemoveGrocery(item.key)}
-        color="red"
+        color="#f5605d"
       />
     </View>
   );
@@ -86,15 +85,14 @@ export default function App() {
           value={quantity}
           onChangeText={(text) => setQuantity(text)}
         />
-        <Button title="   +   " onPress={handleAddGrocery} color='lightgreen'/>
+        <Button title="   +   " onPress={handleAddGrocery} color="lightgreen" />
       </View>
-      
-        <FlatList
-          data={groceryList}
-          renderItem={renderGroceryItem}
-          style={styles.list}
-        />
-      
+
+      <FlatList
+        data={groceryList}
+        renderItem={renderGroceryItem}
+        style={styles.list}
+      />
     </View>
   );
 }
@@ -104,6 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     marginHorizontal: 20,
+    backgroundColor: '#faf6e3',
   },
   header: {
     alignItems: "center",
@@ -112,8 +111,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: 'red'
+    fontWeight: "bold",
+    color: "red",
   },
   inputContainer: {
     flexDirection: "row",
